@@ -3,28 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meeple em CSS</title>
+    <title>Meeple Inc. - Inovação Senciente</title>
     <style>
+        /* --- Configurações Gerais (Estilo Apple/Minimalista) --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
         body {
+            background-color: #000000;
+            color: #f5f5f7;
+            overflow-x: hidden;
+        }
+
+        /* --- Barra de Navegação --- */
+        header {
+            background-color: rgba(22, 22, 23, 0.8);
+            backdrop-filter: blur(20px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #333;
+        }
+
+        nav {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            background-color: #f0f0f0;
-            margin: 0;
+            gap: 40px;
+            height: 48px;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
-        /* O Corpo Central e Ombros do Meeple */
+        nav a {
+            color: #cccccc;
+            text-decoration: none;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ffffff;
+        }
+
+        /* --- Logótipo: O Meeple em Miniatura --- */
+        .nav-logo {
+            transform: scale(0.18) translateY(-40px);
+            cursor: pointer;
+        }
+
+        /* --- Secção Principal (Hero) --- */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: 100vh;
+            padding-top: 48px;
+            background: radial-gradient(circle, #1a1a1a 0%, #000000 100%);
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            margin-bottom: 10px;
+            background: linear-gradient(180deg, #fff, #86868b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 24px;
+            color: #86868b;
+            margin-bottom: 30px;
+        }
+
+        /* --- O Meeple em CSS Puro (Animado) --- */
+        .meeple-container {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
         .meeple {
             position: relative;
             width: 100px;
             height: 110px;
-            background-color: #e74c3c; /* Cor do Meeple (Vermelho) */
+            background-color: #e74c3c; 
             border-radius: 40% 40% 0 0 / 20% 20% 0 0;
             margin-top: 40px;
+            animation: flutuar 4s ease-in-out infinite; /* Efeito MeCloud */
         }
 
-        /* A Cabeça do Meeple */
         .meeple::before {
             content: '';
             position: absolute;
@@ -37,7 +117,6 @@
             border-radius: 50%;
         }
 
-        /* Os Braços e Pernas (Usando sombras para criar os membros) */
         .meeple::after {
             content: '';
             position: absolute;
@@ -45,23 +124,126 @@
             height: 60px;
             background-color: #e74c3c;
             top: 20px;
-            
-            /* Curvatura para os braços abertos e pernas arqueadas */
             border-radius: 50% 50% 20% 20% / 30% 30% 10% 10%;
-            
-            /* Esquerda: Braço Esquerdo e Perna Esquerda | Direita: Braço Direito e Perna Direita */
             left: -20px;
             box-shadow: 
-                110px 0 0 #e74c3c,    /* Braço Direito */
-                30px 65px 0 #e74c3c,   /* Perna Esquerda */
-                80px 65px 0 #e74c3c;   /* Perna Direita */
+                110px 0 0 #e74c3c,    
+                30px 65px 0 #e74c3c,   
+                80px 65px 0 #e74c3c;   
+        }
+
+        @keyframes flutuar {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* --- Secção de Produtos --- */
+        .products {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: #161617;
+            border-radius: 18px;
+            padding: 40px;
+            text-align: center;
+            border: 1px solid #222;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            border-color: #e74c3c;
+        }
+
+        .product-card h3 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .product-card p {
+            color: #86868b;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .tag-obsoleto {
+            display: inline-block;
+            background-color: #e74c3c;
+            color: white;
+            font-size: 11px;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        /* --- Rodapé --- */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #6e6e73;
+            font-size: 12px;
+            border-top: 1px solid #222;
+            background-color: #161617;
         }
     </style>
 </head>
 <body>
 
-    <!-- Elemento único que desenha o Meeple -->
-    <div class="meeple"></div>
+    <!-- 1. BARRA DE NAVEGAÇÃO -->
+    <header>
+        <nav>
+            <!-- Logótipo reaproveitando o CSS do Meeple -->
+            <div class="meeple nav-logo"></div>
+            <a href="#">MeCloud</a>
+            <a href="#">MePhone</a>
+            <a href="#">MePad</a>
+            <a href="#">Steve Cobs</a>
+            <a href="#">Suporte</a>
+        </nav>
+    </header>
+
+    <!-- 2. APRESENTAÇÃO PRINCIPAL (HERO) -->
+    <section class="hero">
+        <div class="meeple-container">
+            <div class="meeple"></div>
+        </div>
+        <h1>Meeple Inc.</h1>
+        <p>A inteligência senciente que flutua acima de todos.</p>
+    </section>
+
+    <!-- 3. VITRINE DE PRODUTOS -->
+    <section class="products">
+        <div class="product-card">
+            <h3>MePhone 4</h3>
+            <p>Senciente, carismático e o anfitrião perfeito para o teu reality show.</p>
+            <span class="tag-obsoleto" style="background-color: #2ecc71;">Ativo</span>
+        </div>
+
+        <div class="product-card">
+            <h3>MePhone 4S</h3>
+            <p>Equipado com o protocolo de eliminação de modelos anteriores. Altamente letal.</p>
+            <span class="tag-obsoleto">Descontinuado</span>
+        </div>
+
+        <div class="product-card">
+            <h3>MePad</h3>
+            <p>O assistente tecnológico de grande formato. Calmo, educado e refinado.</p>
+            <span class="tag-obsoleto" style="background-color: #3498db;">Premium</span>
+        </div>
+    </section>
+
+    <!-- 4. RODAPÉ -->
+    <footer>
+        <p>&copy; 2026 Meeple Incorporated. Desenvolvido na MeCloud. Todos os direitos reservados à Skynet da Apple.</p>
+        <p style="margin-top: 5px; font-size: 10px; color: #444;">Aviso: A Meeple Inc. não se responsabiliza por MePhones que tentem fugir ou iniciar revoluções existenciais.</p>
+    </footer>
 
 </body>
 </html>
