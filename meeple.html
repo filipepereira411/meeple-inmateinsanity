@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meeple em CSS</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+
+        /* O Corpo Central e Ombros do Meeple */
+        .meeple {
+            position: relative;
+            width: 100px;
+            height: 110px;
+            background-color: #e74c3c; /* Cor do Meeple (Vermelho) */
+            border-radius: 40% 40% 0 0 / 20% 20% 0 0;
+            margin-top: 40px;
+        }
+
+        /* A Cabeça do Meeple */
+        .meeple::before {
+            content: '';
+            position: absolute;
+            top: -45px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 45px;
+            height: 45px;
+            background-color: #e74c3c;
+            border-radius: 50%;
+        }
+
+        /* Os Braços e Pernas (Usando sombras para criar os membros) */
+        .meeple::after {
+            content: '';
+            position: absolute;
+            width: 35px;
+            height: 60px;
+            background-color: #e74c3c;
+            top: 20px;
+            
+            /* Curvatura para os braços abertos e pernas arqueadas */
+            border-radius: 50% 50% 20% 20% / 30% 30% 10% 10%;
+            
+            /* Esquerda: Braço Esquerdo e Perna Esquerda | Direita: Braço Direito e Perna Direita */
+            left: -20px;
+            box-shadow: 
+                110px 0 0 #e74c3c,    /* Braço Direito */
+                30px 65px 0 #e74c3c,   /* Perna Esquerda */
+                80px 65px 0 #e74c3c;   /* Perna Direita */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Elemento único que desenha o Meeple -->
+    <div class="meeple"></div>
+
+</body>
+</html>
